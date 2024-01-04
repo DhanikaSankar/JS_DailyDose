@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Quantity</title>
+  </head>
+  <body>
+    <h4 id="js-cart"></h4>
+    <button onclick="showQuantity()">Show Quantity</button>
+    <button onclick="addQuantity()">Add To Cart</button>
+    <button onclick="doubleQuantity()">+2</button>
+    <button onclick="tripleQuantity()">+3</button>
+    <button onclick="handleReset()">Reset Cart</button>
+
+    <script>
+      let cartQuantity = 0;
+      let cartEl = document.getElementById("js-cart");
+
+      function showQuantity() {
+        cartEl.innerHTML = `Cart quantity : ${cartQuantity}`;
+      }
+
+      function addQuantity() {
+        cartQuantity++;
+        cartEl.innerHTML = `Cart quantity : ${cartQuantity}`;
+      }
+
+      function doubleQuantity() {
+        cartQuantity += 2;
+        cartEl.innerHTML = `Cart quantity : ${cartQuantity}`;
+      }
+
+      function tripleQuantity() {
+        cartQuantity += 3;
+        cartEl.innerHTML = `Cart quantity : ${cartQuantity}`;
+      }
+
+      function handleReset() {
+        cartQuantity = 0;
+        console.log("Cart was reset");
+        cartEl.innerHTML = `Cart quantity : ${cartQuantity}`;
+      }
+    </script>
+  </body>
+</html>
