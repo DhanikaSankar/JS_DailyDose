@@ -13,6 +13,9 @@
 
     <button onclick="compareMove('scissors')">Scissors</button>
 
+    <p class="result"></p>
+    <p class="moves"></p>
+    <p class="score"></p>
     <button onclick="handleReset()">Reset Score</button>
 
     <script>
@@ -22,12 +25,11 @@
         ties: 0,
       };
 
-      function handleReset() {
-        score.wins = 0;
-        score.loses = 0;
-        score.ties = 0;
-        localStorage.removeItem("score");
-      }
+      const gameResult = document.querySelector(".result");
+      const gameScore = document.querySelector(".score");
+      const gameMoves = document.querySelector(".moves");
+
+      updateScore();
 
       function selectComputerMove() {
         const randomNum = Math.random();
@@ -82,14 +84,31 @@
         } else if (result === "Tie.") {
           score.ties += 1;
         }
+        updateScore();
 
         localStorage.setItem("score", JSON.stringify(score));
 
         // Popup Result
-        alert(
-          `You picked ${move} and Computer picked ${computerMove} So ${result}
-Score : Win ${score.wins} Lose ${score.loses} Tie ${score.ties}`
-        );
+        //         alert(
+        //           `You picked ${move} and Computer picked ${computerMove} So ${result}
+        // Score : Win ${score.wins} Lose ${score.loses} Tie ${score.ties}`
+        //         );
+
+        gameResult.innerHTML = `${result}`;
+        gameMoves.innerHTML = `You picked ${move} and Computer picked ${computerMove}`;
+      }
+
+      function updateScore() {
+        gameScore.innerText = `Win ${score.wins} Lose ${score.loses} Tie ${score.ties}`;
+      }
+
+      function handleReset() {
+        // console.log("reset");
+        score.wins = 0;
+        score.loses = 0;
+        score.ties = 0;
+        localStorage.removeItem("score");
+        updateScore();
       }
     </script>
   </body>
