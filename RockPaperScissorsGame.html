@@ -4,112 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="RockPaperScissors.css" />
   </head>
   <body>
     <h4>Rock Paper Scissors Game</h4>
-    <button onclick="compareMove('rock')">Rock</button>
+    <button onclick="compareMove('rock')" class="emoji-btn">
+      <img src="/images/rock-emoji.png" width="100px" />
+    </button>
 
-    <button onclick="compareMove('paper')">Paper</button>
+    <button onclick="compareMove('paper')" class="emoji-btn">
+      <img src="/images/paper-emoji.png" width="100px" />
+    </button>
 
-    <button onclick="compareMove('scissors')">Scissors</button>
+    <button onclick="compareMove('scissors')" class="emoji-btn">
+      <img src="/images/scissors-emoji.png" width="100" />
+    </button>
 
-    <p class="result"></p>
+    <p class="result rst"></p>
     <p class="moves"></p>
     <p class="score"></p>
-    <button onclick="handleReset()">Reset Score</button>
+    <button onclick="handleReset()" class="reset-btn">Reset Score</button>
 
-    <script>
-      let score = JSON.parse(localStorage.getItem("score")) || {
-        wins: 0,
-        loses: 0,
-        ties: 0,
-      };
-
-      const gameResult = document.querySelector(".result");
-      const gameScore = document.querySelector(".score");
-      const gameMoves = document.querySelector(".moves");
-
-      updateScore();
-
-      function selectComputerMove() {
-        const randomNum = Math.random();
-        let computerMove = "";
-
-        if (randomNum >= 0 && randomNum < 1 / 3) {
-          computerMove = "rock";
-        } else if (randomNum >= 1 / 3 && randomNum < 2 / 3) {
-          computerMove = "paper";
-        } else if (randomNum >= 2 / 3 && randomNum <= 1) {
-          computerMove = "scissors";
-        }
-
-        return computerMove;
-      }
-
-      function compareMove(move) {
-        const computerMove = selectComputerMove();
-        let result = "";
-
-        if (move === "rock") {
-          if (computerMove === "rock") {
-            result = "Tie.";
-          } else if (computerMove === "paper") {
-            result = "You Lose.";
-          } else if (computerMove === "scissors") {
-            result = "You Win.";
-          }
-        } else if (move === "paper") {
-          if (computerMove === "rock") {
-            result = "You Win.";
-          } else if (computerMove === "paper") {
-            result = "Tie.";
-          } else if (computerMove === "scissors") {
-            result = "You Lose.";
-          }
-        } else if (move === "scissors") {
-          if (computerMove === "rock") {
-            result = "You Lose.";
-          } else if (computerMove === "paper") {
-            result = "You Win.";
-          } else if (computerMove === "scissors") {
-            result = "Tie.";
-          }
-        }
-
-        // Score Section
-        if (result === "You Win.") {
-          score.wins += 1;
-        } else if (result === "You Lose.") {
-          score.loses += 1;
-        } else if (result === "Tie.") {
-          score.ties += 1;
-        }
-        updateScore();
-
-        localStorage.setItem("score", JSON.stringify(score));
-
-        // Popup Result
-        //         alert(
-        //           `You picked ${move} and Computer picked ${computerMove} So ${result}
-        // Score : Win ${score.wins} Lose ${score.loses} Tie ${score.ties}`
-        //         );
-
-        gameResult.innerHTML = `${result}`;
-        gameMoves.innerHTML = `You picked ${move} and Computer picked ${computerMove}`;
-      }
-
-      function updateScore() {
-        gameScore.innerText = `Win ${score.wins} Lose ${score.loses} Tie ${score.ties}`;
-      }
-
-      function handleReset() {
-        // console.log("reset");
-        score.wins = 0;
-        score.loses = 0;
-        score.ties = 0;
-        localStorage.removeItem("score");
-        updateScore();
-      }
-    </script>
+    <script src="RockPaperScissors.js"></script>
   </body>
 </html>
