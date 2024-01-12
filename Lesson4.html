@@ -4,21 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM</title>
+    <style>
+      .sub-btn {
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 24px;
+        cursor: pointer;
+        border: none;
+      }
+      .is-subscribed {
+        background-color: rgb(238, 229, 229);
+        color: black;
+      }
+    </style>
   </head>
   <body>
     <h4>Youtube Subscribe button</h4>
-    <button class="sub" onclick="handlesubscribe()">Subscribe</button>
+    <button class="sub sub-btn" onclick="handlesubscribe()">Subscribe</button>
 
     <script>
       function handlesubscribe() {
-        console.log(111);
         const htmlEle = document.querySelector(".sub");
 
-        if(htmlEle.innerHTML === 'Subscribe'){
-            htmlEle.innerHTML  = 'Subscribed';
-        }else{
-            htmlEle.innerHTML  = 'Subscribe';
-
+        if (htmlEle.innerHTML === "Subscribe") {
+          htmlEle.innerHTML = "Subscribed";
+          // add class to an element
+          htmlEle.classList.add("is-subscribed");
+        } else {
+          htmlEle.innerHTML = "Subscribe";
+          // Remove class to an element
+          htmlEle.classList.remove("is-subscribed");
         }
       }
     </script>
