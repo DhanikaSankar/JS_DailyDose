@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const nums = [10, 20, 30];
+      nums[2] = 99;
+      // console.log(nums);
+
+      // Find Last Index Value
+      function getArrayLastValue(array) {
+        let lastIndex = array.length - 1;
+        console.log(array[lastIndex]);
+      }
+      getArrayLastValue([1, 20, 22, 24, 35]);
+      getArrayLastValue(["hi", "hello", "good"]);
+
+      // Swap first and last values
+      function arrayswapArray(array) {
+        let lastIndex = array.length - 1;
+        let firstValue = array[0];
+        array[0] = array[lastIndex];
+        array[lastIndex] = firstValue;
+        console.log(array);
+      }
+      arrayswapArray([1, 20, 22, 24, 5]);
+    </script>
+  </body>
+</html>

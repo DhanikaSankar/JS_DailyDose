@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list</title>
+  </head>
+  <body>
+    <h3>TODO LIST</h3>
+    <input type="text" placeholder="ToDo Name" class="js-input" />
+    <button onclick="handleAdd()">ADD</button>
+    <p id="data"></p>
+
+    <script>
+      let arrElements = [];
+
+      function handleAdd() {
+        const inputElement = document.querySelector(".js-input");
+        let inputValue = inputElement.value;
+        arrElements.push(inputValue);
+        inputElement.value = "";
+        for(let i = 0; i<arrElements.length;i++){
+            document.querySelector('#data').innerHTML = arrElements[i];
+        }
+      }
+    </script>
+  </body>
+</html>
